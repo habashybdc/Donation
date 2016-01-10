@@ -18,7 +18,7 @@ import org.takla.hamla.control.ExportExcelListner;
 import org.takla.hamla.control.PrintListner;
 import org.takla.hamla.modle.ViewCellRender;
 
-public class ViewHamaltOfKind extends JPanel {
+public class ViewStatisticstOfKind extends JPanel {
 	/**
 	 * 
 	 */
@@ -29,7 +29,7 @@ public class ViewHamaltOfKind extends JPanel {
 	private Object[][] data;
 	private String[] colom;
 
-	public ViewHamaltOfKind(Object[][] data, String[] colom, int num) {
+	public ViewStatisticstOfKind(Object[][] data, String[] colom, int num) {
 		this.data = data;
 		this.colom = colom;
 		this.initComponents(num);
@@ -54,6 +54,7 @@ public class ViewHamaltOfKind extends JPanel {
 		};
 		table.getTableHeader().setFont(new Font("Arial ITC", 0, 16));
 		table.setRowHeight(35);
+
 		this.jTableData.setLayout(new BorderLayout(0, 0));
 		JScrollPane scrollPane = new JScrollPane(table);
 		this.jTableData.add((Component) scrollPane, "Center");
@@ -85,11 +86,15 @@ public class ViewHamaltOfKind extends JPanel {
 										.addComponent(this.jButtonExport, -2, 33, -2))));
 		String header = "حضور رجال";
 		String fileName = "men";
-		if (num == 1) {
+		TableColumnModel f = table.getColumnModel();
+
+		if (num == 0) {
+			f.getColumn(f.getColumnCount() - 1).setMinWidth(175);
+		} else if (num == 1) {
 			header = "حضور سيدات";
 			fileName = "women";
+			f.getColumn(f.getColumnCount() - 1).setMinWidth(175);
 		} else if (num == 2) {
-			TableColumnModel f = table.getColumnModel();
 			f.getColumn(1).setMinWidth(100);
 			header = "دعاية الحملات";
 			fileName = "advertisement";

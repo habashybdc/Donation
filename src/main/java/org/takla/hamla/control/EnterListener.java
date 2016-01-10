@@ -20,29 +20,30 @@ public class EnterListener implements ActionListener {
 	JFrame frame;
 	JTextField user;
 	JTextField pass;
-	JRadioButton black;
+	JRadioButton[] group;
+	String[] styles;
 
-	public EnterListener(JFrame frame, JTextField user, JTextField pass, JRadioButton black) {
+	public EnterListener(JFrame frame, JTextField user, JTextField pass, JRadioButton[] group, String[] styles) {
 		this.frame = frame;
 		this.user = user;
 		this.pass = pass;
-		this.black = black;
+		this.group = group;
+		this.styles = styles;
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (this.user.getText()
-				.equals("حملة التبرع بالدم")
-				&& this.pass.getText().equals("mina shafik")) {
-			if (!this.black.isSelected()) {
-				try {
-					UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
-				} catch (Exception var2_2) {
-					// empty catch block
+		if (this.user.getText().equals("حملة التبرع بالدم") && this.pass.getText().equals("mina shafik")) {
+			for (int i = 0; i < group.length; i++) {
+				if (group[i].isSelected()) {
+					try {
+						UIManager.setLookAndFeel(styles[i]);
+					} catch (Exception var2_2) {
+						// empty catch block
+					}
 				}
 			}
 			String mass = "اهداء من المهندس/ مينا شفيق الى كشافة الحبشى";
-			JLabel l = new JLabel(
-					"مرحباً بك في برنامج حملة التبرع بالدم ");
+			JLabel l = new JLabel("مرحباً بك في برنامج حملة التبرع بالدم ");
 			JLabel l2 = new JLabel(mass);
 			JPanel p = new JPanel();
 			p.setLayout(new GridLayout(2, 1));
@@ -57,12 +58,9 @@ public class EnterListener implements ActionListener {
 			JOptionPane.showMessageDialog(null, p);
 			new MainView().run(this.frame);
 		} else {
-			Object[] options = new Object[] {
-					"إعادة المحاولة",
-					"خروج" };
-			int i = JOptionPane.showOptionDialog(null,
-					"اسم المستخدم وكلمة السر غير صحيحين اعد المحاولة.",
-					"تحذير", -1, 2, null, options, options[0]);
+			Object[] options = new Object[] { "إعادة المحاولة", "خروج" };
+			int i = JOptionPane.showOptionDialog(null, "اسم المستخدم وكلمة السر غير صحيحين اعد المحاولة.", "تحذير", -1,
+					2, null, options, options[0]);
 			if (i == 1) {
 				System.exit(0);
 			}

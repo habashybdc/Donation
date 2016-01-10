@@ -13,7 +13,7 @@ import org.takla.hamla.modle.Donor;
 import org.takla.hamla.modle.HasDonate;
 import org.takla.hamla.run.AllRun;
 
-public class ViewHamalt extends JTabbedPane {
+public class ViewStatistics extends JTabbedPane {
 	/**
 	 * 
 	 */
@@ -24,7 +24,7 @@ public class ViewHamalt extends JTabbedPane {
 
 	private String[] howDidYouKnow;
 
-	public ViewHamalt() {
+	public ViewStatistics() {
 		howDidYouKnow = AllRun.basicData.getHowDidYouKnow();
 		String[] recordColom = new String[howDidYouKnow.length + 5];
 		int i = howDidYouKnow.length - 1;
@@ -44,10 +44,10 @@ public class ViewHamalt extends JTabbedPane {
 		}
 		this.dataRecords = new Object[monthesNames.length][recordColom.length];
 		this.setColoms();
-		ViewHamaltOfKind men = new ViewHamaltOfKind(this.setData(true), this.colom, 0);
-		ViewHamaltOfKind women = new ViewHamaltOfKind(this.setData(false), this.colom, 1);
+		ViewStatisticstOfKind men = new ViewStatisticstOfKind(this.setData(true), this.colom, 0);
+		ViewStatisticstOfKind women = new ViewStatisticstOfKind(this.setData(false), this.colom, 1);
 		this.setDataRecord();
-		ViewHamaltOfKind record = new ViewHamaltOfKind(this.dataRecords, recordColom, 2);
+		ViewStatisticstOfKind record = new ViewStatisticstOfKind(this.dataRecords, recordColom, 2);
 		men.setName("رجال");
 		women.setName("سيدات");
 		record.setName("تأثير الدعاية");

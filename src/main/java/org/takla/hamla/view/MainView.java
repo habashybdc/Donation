@@ -78,7 +78,7 @@ public class MainView extends JFrame {
 		this.jButtonViewDonation.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
-				ViewHamalt v = new ViewHamalt();
+				ViewStatistics v = new ViewStatistics();
 				v.setName("سجل الحملات");
 				MainView.this.jTabbedPane1.add(v);
 				MainView.this.jTabbedPane1.setSelectedComponent(v);

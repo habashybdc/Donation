@@ -23,6 +23,7 @@ public class Intro extends JFrame {
 	private JTextField user;
 	private JRadioButton white;
 	private JRadioButton black;
+	private JRadioButton texture;
 	private JRadioButton gray;
 	private JPasswordField pass;
 	private Paintcomponent p;
@@ -37,10 +38,11 @@ public class Intro extends JFrame {
 		this.enter = new JButton();
 		this.white = new JRadioButton("White");
 		this.black = new JRadioButton("Black");
-		this.gray = new JRadioButton("New");
+		this.gray = new JRadioButton("Both");
+		this.texture = new JRadioButton("Texture");
 		butt.add(this.black);
 		butt.add(this.white);
-		butt.add(this.gray);
+		butt.add(this.texture);
 		this.black.setSelected(true);
 		this.user.setBorder(BorderFactory.createLineBorder(Color.white));
 		this.pass.setBorder(BorderFactory.createLineBorder(Color.white));
@@ -50,15 +52,18 @@ public class Intro extends JFrame {
 		this.enter.setBackground(Color.black);
 		this.white.setBackground(Color.white);
 		this.black.setBackground(Color.black);
+		this.gray.setBackground(Color.GRAY);
 		this.userName.setForeground(Color.white);
 		this.password.setForeground(Color.white);
 		this.enter.setForeground(Color.blue);
 		this.p.setLayout(null);
 		this.userName.setBounds(290, 450, 200, 30);
 		this.user.setBounds(100, 450, 150, 30);
-		this.black.setBounds(20, 497, 55, 19);
-		this.white.setBounds(20, 520, 55, 19);
-		this.gray.setBounds(20, 543, 55, 19);
+		this.black.setBounds(20, 474, 55, 19);
+		this.white.setBounds(20, 497, 55, 19);
+		this.gray.setBounds(20, 520, 55, 19);
+		this.texture.setBounds(20, 543, 55, 19);
+
 		this.p.setBounds(0, 0, this.getWidth(), this.getHeight());
 		this.password.setBounds(290, 500, 210, 30);
 		this.pass.setBounds(100, 505, 150, 30);
@@ -73,17 +78,17 @@ public class Intro extends JFrame {
 		this.black.setFont(new Font("TimesRoman", 0, 10));
 		this.white.setFont(new Font("TimesRoman", 0, 10));
 		this.gray.setFont(new Font("TimesRoman", 0, 10));
+		this.texture.setFont(new Font("TimesRoman", 0, 10));
 		this.userName.setText("اسم المستخدم");
 		this.password.setText("كلمة السر");
 		this.pass.setText("mina shafik");
 		this.user.setText("حملة التبرع بالدم");
 		this.enter.setText("دخول");
 		String[] styles = new String[] { "com.jtattoo.plaf.hifi.HiFiLookAndFeel",
-				"com.jtattoo.plaf.mcwin.McWinLookAndFeel",
-				// "com.jtattoo.plaf.acryl.AcrylLookAndFeel",
+				"com.jtattoo.plaf.mcwin.McWinLookAndFeel", "com.jtattoo.plaf.acryl.AcrylLookAndFeel",
 				// "com.jtattoo.plaf.aluminium.AluminiumLookAndFeel",
 				"com.jtattoo.plaf.texture.TextureLookAndFeel" };
-		JRadioButton[] group = new JRadioButton[] { black, white, gray };
+		JRadioButton[] group = new JRadioButton[] { black, white, gray, texture };
 		this.enter.addActionListener(new EnterListener(this, this.user, this.pass, group, styles));
 		this.add(this.p);
 		this.p.add(this.user);
@@ -93,6 +98,7 @@ public class Intro extends JFrame {
 		this.p.add(this.enter);
 		this.p.add(this.white);
 		this.p.add(this.gray);
+		this.p.add(this.texture);
 		this.p.add(this.black);
 	}
 }

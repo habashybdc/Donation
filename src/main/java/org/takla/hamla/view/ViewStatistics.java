@@ -81,7 +81,7 @@ public class ViewStatistics extends JTabbedPane {
 			while (j < this.dataRecords[i].length - 3) {
 				t = Integer.parseInt(this.dataRecords[i][j].toString());
 				if (t == 0) {
-					this.dataRecords[i][j] = " ";
+					this.dataRecords[i][j] =0;
 				}
 				++j;
 			}

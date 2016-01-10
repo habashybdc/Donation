@@ -17,6 +17,8 @@ import javax.swing.JTable;
 import javax.swing.table.TableModel;
 
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.DataFormat;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -87,14 +89,20 @@ public class ExportExcelListner implements ActionListener {
 			@SuppressWarnings("resource")
 			XSSFWorkbook myWorkBook = new XSSFWorkbook();
 			XSSFSheet mySheet = myWorkBook.createSheet("sheet1");
+			DataFormat format = myWorkBook.createDataFormat();
 
-			XSSFCellStyle centerStyle = myWorkBook.createCellStyle();
-			centerStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+			XSSFCellStyle intCenterStyle = myWorkBook.createCellStyle();
+			intCenterStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+			intCenterStyle.setDataFormat(format.getFormat("#,##0"));
+
+			XSSFCellStyle doubleCenterStyle = myWorkBook.createCellStyle();
+			doubleCenterStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+			doubleCenterStyle.setDataFormat(format.getFormat("#,##0.000"));
 			// write header to file (columns)
 			XSSFRow row = mySheet.createRow(0);
 			for (int i = 0; i < model.getColumnCount(); i++) {
 				XSSFCell cell = row.createCell(model.getColumnCount() - 1 - i);
-				cell.setCellStyle(centerStyle);
+				cell.setCellStyle(intCenterStyle);
 				cell.setCellValue(model.getColumnName(i));
 			}
 
@@ -104,22 +112,29 @@ public class ExportExcelListner implements ActionListener {
 				for (j = 0; j < model.getColumnCount(); j++) {
 					XSSFCell cell = row1.createCell(model.getColumnCount() - 1 - j);
 					Object obj = model.getValueAt(i, j);
-					if (obj == null) {
-						cell.setCellValue("");
-					} else if (obj instanceof String) {
+					if (obj instanceof String) {
 						cell.setCellValue((String) obj);
 					} else if (obj instanceof Double) {
-						cell.setCellStyle(centerStyle);
+						cell.setCellStyle(doubleCenterStyle);
+						cell.setCellType(Cell.CELL_TYPE_NUMERIC);
 						cell.setCellValue((Double) obj);
 					} else if (obj instanceof Integer) {
-						cell.setCellStyle(centerStyle);
-						cell.setCellValue(((Integer) obj).doubleValue());
+						if (obj != null) {
+							cell.setCellStyle(intCenterStyle);
+							cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+							cell.setCellValue(((Integer) obj).doubleValue());
+						} 
 					} else {
-						cell.setCellValue(obj.toString());
+						if (obj != null)
+							cell.setCellValue(obj.toString());
 					}
 				}
 			}
 
+			for (j = 0; j < model.getColumnCount(); j++) {
+				mySheet.autoSizeColumn(j);
+			}
+			mySheet.setRightToLeft(true);
 			// open an OutputStream to save written data into XLSX file
 			FileOutputStream fileOut = new FileOutputStream(file);
 			myWorkBook.write(fileOut);

@@ -31,7 +31,7 @@ import org.takla.hamla.control.TextActionListener;
 import org.takla.hamla.modle.Donor;
 import org.takla.hamla.modle.HasDonate;
 import org.takla.hamla.modle.MyCellRender;
-import org.takla.hamla.modle.MyTableModel;
+import org.takla.hamla.modle.DonateTableModel;
 import org.takla.hamla.run.AllRun;
 
 public class ViewDonorHamla extends JPanel {
@@ -61,7 +61,7 @@ public class ViewDonorHamla extends JPanel {
 	private JTextField jTextSearch;
 	private JTable jTableDonorData;
 	private JTable jTableCome;
-	private MyTableModel myTableModel; 
+	private DonateTableModel myTableModel; 
 	private JComboBox<String> jComboBoxHowDidYouKnow;
 
 	public ViewDonorHamla(ArrayList<Donor> allDonors, ArrayList<HasDonate> come, File f, ViewHamla pane) {
@@ -318,7 +318,7 @@ public class ViewDonorHamla extends JPanel {
 				return new MyCellRender(column);
 			}
 		};
-		myTableModel = new MyTableModel(data, this);
+		myTableModel = new DonateTableModel(data, this);
 		this.jTableCome = new JTable(myTableModel) {
 			private static final long serialVersionUID = 1;
 

@@ -1,13 +1,10 @@
-/*
- * Decompiled with CFR 0_110.
- */
 package org.takla.hamla.modle;
 
 import javax.swing.table.AbstractTableModel;
 
 import org.takla.hamla.view.ViewDonorHamla;
 
-public class MyTableModel extends AbstractTableModel {
+public class DonateTableModel extends AbstractTableModel {
 
 	/**
 	 * 
@@ -19,7 +16,7 @@ public class MyTableModel extends AbstractTableModel {
 	private String[] columnNames = new String[] { "id", "عرفت منين",
 			"الاسم", "تبرع" };
 
-	public MyTableModel(Object[][] data, ViewDonorHamla hamla) {
+	public DonateTableModel(Object[][] data, ViewDonorHamla hamla) {
 		this.data = data;
 		this.hamla = hamla;
 	}
@@ -55,7 +52,6 @@ public class MyTableModel extends AbstractTableModel {
 
 	@Override
 	public boolean isCellEditable(int row, int col) {
-		System.out.println("ezay");
 		if (col < 2) {
 			return false;
 		}

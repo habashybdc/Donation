@@ -27,6 +27,7 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.border.TitledBorder;
 
 import org.takla.hamla.run.AllRun;
 
@@ -86,7 +87,7 @@ public class OpenHamla extends JPanel {
 		this.jScrollPane1 = new JScrollPane();
 		this.jListEdit = new JList<String>();
 		this.jButtonEditHamla = new JButton();
-		this.jPanelNew.setBorder(BorderFactory.createTitledBorder(null, "فتح حملة جديدة", 0, 0,
+		this.jPanelNew.setBorder(BorderFactory.createTitledBorder(null, " اضافة حملة جديدة", TitledBorder.RIGHT , 0,
 				new Font("Times New Roman", 1, 20), new Color(255, 0, 0)));
 		this.jSpinnerHamlaNumberOpen.setFont(new Font("Times New Roman", 1, 20));
 		this.jSpinnerHamlaNumberOpen
@@ -148,7 +149,7 @@ public class OpenHamla extends JPanel {
 								.addComponent(this.jLabel3, -2, 34, -2))
 						.addGap(18, 18, 18).addComponent(this.jButtonNewHamla, -2, 45, -2)
 						.addContainerGap(137, 32767)));
-		this.jPanelEdit.setBorder(BorderFactory.createTitledBorder(null, "تعديل حملة", 0, 0,
+		this.jPanelEdit.setBorder(BorderFactory.createTitledBorder(null, "تعديل حملة", TitledBorder.RIGHT, 0,
 				new Font("Times New Roman", 1, 20), new Color(255, 0, 0)));
 		this.jPanelEdit.setFont(new Font("Times New Roman", 1, 20));
 		this.jLabel4.setBackground(new Color(255, 0, 0));

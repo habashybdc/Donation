@@ -157,9 +157,9 @@ public class ViewDonorOfKind extends JPanel {
 		int i = 0;
 		while (i < this.donators.size()) {
 			Donor don = this.donators.get(i);
-			this.data2[i][1] = "No";
+			this.data2[i][1] = "X";
 			if (don.isCanDonate()) {
-				this.data2[i][1] = "Yes";
+				this.data2[i][1] = "✓";
 			}
 			this.data2[i][2] = don.getE_mail();
 			this.data2[i][3] = don.getFather();
@@ -187,18 +187,28 @@ public class ViewDonorOfKind extends JPanel {
 			}
 		};
 		TableColumnModel f = this.table2.getColumnModel();
+		// Donated
 		f.getColumn(1).setMaxWidth(35);
 		f.getColumn(1).setMinWidth(35);
+		// Email
 		f.getColumn(2).setMinWidth(200);
+		// Father
 		f.getColumn(3).setMinWidth(80);
+		// Church
 		f.getColumn(4).setMinWidth(100);
+		// Address
 		f.getColumn(5).setMinWidth(200);
+		// mobile
 		f.getColumn(6).setMinWidth(100);
+		// birth date
 		f.getColumn(7).setMaxWidth(95);
 		f.getColumn(7).setMinWidth(95);
+		// Blood type
 		f.getColumn(8).setMinWidth(45);
 		f.getColumn(8).setMaxWidth(45);
+		// Name
 		f.getColumn(9).setMinWidth(150);
+		// Index
 		f.getColumn(10).setMinWidth(35);
 		f.getColumn(10).setMaxWidth(35);
 		this.table2.removeColumn(f.getColumn(0));
@@ -211,6 +221,7 @@ public class ViewDonorOfKind extends JPanel {
 		this.table2.setFont(new Font("Arial ITC", 1, 18));
 		this.table2.setRowHeight(40);
 		this.jScrollPane12.getViewport().add((Component) this.table2, (Object) null);
+		// jScrollPane12.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		this.teachersPanel.add((Component) this.jScrollPane12, "Center");
 		return this.table2;
 	}

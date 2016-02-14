@@ -1,5 +1,6 @@
 package org.takla.hamla.control;
 
+import java.awt.ComponentOrientation;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
